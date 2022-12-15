@@ -7,7 +7,7 @@ import {DIST_LIBRARIES_ROOT} from '../../constants';
 
 import {collectComponents, execChildProcess} from '../../util/task_helpers';
 
-import {build_release} from './publish'
+import {buildRelease} from './libraries'
 
 /**
  * GulpTask: link
@@ -83,8 +83,8 @@ function _link(): Promise<void> {
 function _unlink(): Promise<void> {
   return doLink(true);
 }
-const link = series(build_release, _link);
-const unlink = series(build_release, _unlink);
+const link = series(buildRelease, _link);
+const unlink = series(buildRelease, _unlink);
 link.description = "NPM Link the built @Tangential libraries into the global npm 'namespace'.";
 unlink.description = "NPM Unlink the built @Tangential libraries from the global npm 'namespace'.";
 export {link, unlink}

@@ -5,14 +5,7 @@ import * as path from 'path'
 
 import {execTask, collectComponents, execChildProcess} from '../../util/task_helpers';
 import {DIST_LIBRARIES_ROOT} from '../../constants';
-import {clean, deleteGlob} from '../clean'
-import {buildLibs, buildRelease} from './libraries'
-
-const argv = minimist(process.argv.slice(3));
-
-export async function build_release_cleanSpec() {
-  return deleteGlob('dist/**/*.spec.*')
-}
+import { buildRelease} from './libraries'
 
 /** Make sure we're logged in. */
 function publish_whoami() {

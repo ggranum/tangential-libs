@@ -2,8 +2,11 @@ import {series} from 'gulp'
 import {LIBRARY_BUILD_ORDER} from '../../constants';
 import * as minimist from 'minimist'
 import {execNodeTask} from '../../util/task_helpers'
-import {clean} from '../clean'
-import {build_release_cleanSpec} from './publish'
+import {clean, deleteGlob} from '../clean'
+
+export async function build_release_cleanSpec() {
+  return deleteGlob('dist/**/*.spec.*')
+}
 
 export async function buildLibsDevelopment() {
   return doBuildLibs('development')
